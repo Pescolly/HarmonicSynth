@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C0F0E9A81A594163009529FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0E9A71A594163009529FA /* AppDelegate.swift */; };
+		C0F0E9AA1A594163009529FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0E9A91A594163009529FA /* ViewController.swift */; };
+		C0F0E9AD1A594163009529FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F0E9AB1A594163009529FA /* Main.storyboard */; };
+		C0F0E9AF1A594163009529FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F0E9AE1A594163009529FA /* Images.xcassets */; };
+		C0F0E9B21A594163009529FA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0F0E9B01A594163009529FA /* LaunchScreen.xib */; };
+		C0F0E9BE1A594164009529FA /* chordmakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0E9BD1A594164009529FA /* chordmakerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0F0E9B81A594164009529FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0F0E99A1A594163009529FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0F0E9A11A594163009529FA;
+			remoteInfo = chordmaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C0F0E9A21A594163009529FA /* chordmaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chordmaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0F0E9A61A594163009529FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0F0E9A71A594163009529FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0F0E9A91A594163009529FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C0F0E9AC1A594163009529FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0F0E9AE1A594163009529FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C0F0E9B11A594163009529FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C0F0E9B71A594164009529FA /* chordmakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chordmakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0F0E9BC1A594164009529FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0F0E9BD1A594164009529FA /* chordmakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chordmakerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0F0E99F1A594163009529FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0F0E9B41A594164009529FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0F0E9991A594163009529FA = {
+			isa = PBXGroup;
+			children = (
+				C0F0E9A41A594163009529FA /* chordmaker */,
+				C0F0E9BA1A594164009529FA /* chordmakerTests */,
+				C0F0E9A31A594163009529FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0F0E9A31A594163009529FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0F0E9A21A594163009529FA /* chordmaker.app */,
+				C0F0E9B71A594164009529FA /* chordmakerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0F0E9A41A594163009529FA /* chordmaker */ = {
+			isa = PBXGroup;
+			children = (
+				C0F0E9A71A594163009529FA /* AppDelegate.swift */,
+				C0F0E9A91A594163009529FA /* ViewController.swift */,
+				C0F0E9AB1A594163009529FA /* Main.storyboard */,
+				C0F0E9AE1A594163009529FA /* Images.xcassets */,
+				C0F0E9B01A594163009529FA /* LaunchScreen.xib */,
+				C0F0E9A51A594163009529FA /* Supporting Files */,
+			);
+			path = chordmaker;
+			sourceTree = "<group>";
+		};
+		C0F0E9A51A594163009529FA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0F0E9A61A594163009529FA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0F0E9BA1A594164009529FA /* chordmakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0F0E9BD1A594164009529FA /* chordmakerTests.swift */,
+				C0F0E9BB1A594164009529FA /* Supporting Files */,
+			);
+			path = chordmakerTests;
+			sourceTree = "<group>";
+		};
+		C0F0E9BB1A594164009529FA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0F0E9BC1A594164009529FA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0F0E9A11A594163009529FA /* chordmaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0F0E9C11A594164009529FA /* Build configuration list for PBXNativeTarget "chordmaker" */;
+			buildPhases = (
+				C0F0E99E1A594163009529FA /* Sources */,
+				C0F0E99F1A594163009529FA /* Frameworks */,
+				C0F0E9A01A594163009529FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = chordmaker;
+			productName = chordmaker;
+			productReference = C0F0E9A21A594163009529FA /* chordmaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0F0E9B61A594164009529FA /* chordmakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0F0E9C41A594164009529FA /* Build configuration list for PBXNativeTarget "chordmakerTests" */;
+			buildPhases = (
+				C0F0E9B31A594164009529FA /* Sources */,
+				C0F0E9B41A594164009529FA /* Frameworks */,
+				C0F0E9B51A594164009529FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0F0E9B91A594164009529FA /* PBXTargetDependency */,
+			);
+			name = chordmakerTests;
+			productName = chordmakerTests;
+			productReference = C0F0E9B71A594164009529FA /* chordmakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0F0E99A1A594163009529FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "armen karamian";
+				TargetAttributes = {
+					C0F0E9A11A594163009529FA = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					C0F0E9B61A594164009529FA = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = C0F0E9A11A594163009529FA;
+					};
+				};
+			};
+			buildConfigurationList = C0F0E99D1A594163009529FA /* Build configuration list for PBXProject "chordmaker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0F0E9991A594163009529FA;
+			productRefGroup = C0F0E9A31A594163009529FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0F0E9A11A594163009529FA /* chordmaker */,
+				C0F0E9B61A594164009529FA /* chordmakerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0F0E9A01A594163009529FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0F0E9AD1A594163009529FA /* Main.storyboard in Resources */,
+				C0F0E9B21A594163009529FA /* LaunchScreen.xib in Resources */,
+				C0F0E9AF1A594163009529FA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0F0E9B51A594164009529FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0F0E99E1A594163009529FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0F0E9AA1A594163009529FA /* ViewController.swift in Sources */,
+				C0F0E9A81A594163009529FA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0F0E9B31A594164009529FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0F0E9BE1A594164009529FA /* chordmakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0F0E9B91A594164009529FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0F0E9A11A594163009529FA /* chordmaker */;
+			targetProxy = C0F0E9B81A594164009529FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C0F0E9AB1A594163009529FA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0F0E9AC1A594163009529FA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0F0E9B01A594163009529FA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0F0E9B11A594163009529FA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0F0E9BF1A594164009529FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C0F0E9C01A594164009529FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0F0E9C21A594164009529FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = chordmaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C0F0E9C31A594164009529FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = chordmaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C0F0E9C51A594164009529FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = chordmakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chordmaker.app/chordmaker";
+			};
+			name = Debug;
+		};
+		C0F0E9C61A594164009529FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = chordmakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chordmaker.app/chordmaker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0F0E99D1A594163009529FA /* Build configuration list for PBXProject "chordmaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0F0E9BF1A594164009529FA /* Debug */,
+				C0F0E9C01A594164009529FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0F0E9C11A594164009529FA /* Build configuration list for PBXNativeTarget "chordmaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0F0E9C21A594164009529FA /* Debug */,
+				C0F0E9C31A594164009529FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C0F0E9C41A594164009529FA /* Build configuration list for PBXNativeTarget "chordmakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0F0E9C51A594164009529FA /* Debug */,
+				C0F0E9C61A594164009529FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0F0E99A1A594163009529FA /* Project object */;
+}

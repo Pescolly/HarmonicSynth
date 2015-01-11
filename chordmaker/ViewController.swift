@@ -10,34 +10,48 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
-
+    
+    @IBOutlet weak var hundredHertzSlider: UISlider!
+    @IBOutlet weak var tenHertzSlider: UISlider!
+    @IBOutlet weak var oneHertzSlider: UISlider!
+    @IBOutlet weak var tenthHertzSlider: UISlider!
+    @IBOutlet weak var hundredthHertzSlider: UISlider!
+    
     @IBOutlet weak var firstHarmonicPicker: UIPickerView!
     @IBOutlet weak var secondHarmonicPicker: UIPickerView!
     @IBOutlet weak var thirdHarmonicPicker: UIPickerView!
     @IBOutlet weak var fourthHarmonicPicker: UIPickerView!
     @IBOutlet weak var fifthHarmonicPicker: UIPickerView!
     
-    @IBOutlet weak var firstHarmonicSlider: UISwitch!
-    @IBOutlet weak var secondHarmonicSlider: UISwitch!
-    @IBOutlet weak var thirdHarmonicSlider: UISwitch!
-    @IBOutlet weak var fourthHarmonicSlider: UISwitch!
-    @IBOutlet weak var fifthHarmonicSlider: UISwitch!
+    @IBOutlet weak var firstHarmonicSwitch: UISwitch!
+    @IBOutlet weak var secondHarmonicSwitch: UISwitch!
+    @IBOutlet weak var thirdHarmonicSwitch: UISwitch!
+    @IBOutlet weak var fourthHarmonicSwitch: UISwitch!
+    @IBOutlet weak var fifthHarmonicSwitch: UISwitch!
 
     let firstHarmonicPickerData = ["1st", "Perfect 5th"]
     let secondHarmonicPickerData = ["2nd", "2nd + M3", "M3", "2nd + m3", "m3", "m7"]
-    let thirdHarmonicPickerData = ["3rd", "3rd + M2", "3rd + M3", "3rd + Tritone", "3rd + 5th Partial", "2/3 Tone 3rd P8 + neutral 6th", "2/3 Tone P8 + P5 + m3", "3rd + M7"]
+    let thirdHarmonicPickerData = ["3rd", "3rd + M2", "3rd + M3", "3rd + Tri", "3rd + 5th", "3rd + 6th", "P8 + P5 + m3", "3rd + M7"]
     let fourthHarmonicPickerData = ["4th"]
     let fifthHarmonicPickerData = ["5th"]
+    
+    var fundamentalFrequency: Float?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        //setup harmonic pickers
         firstHarmonicPickerSetup()
         secondHarmonicPickerSetup()
         thirdHarmonicPickerSetup()
         fourthHarmonicPickerSetup()
         fifthHarmonicPickerSetup()
+        
+        //setup switch to turn harmonics on/off
+        switchSetup()
+        
+        //setup sliders to adjust frequency
+        frequencyValueSliderSetup()
     }
 
     override func didReceiveMemoryWarning()
@@ -107,6 +121,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    func switchSetup()
+    {
+        firstHarmonicSwitch.on = false
+        secondHarmonicSwitch.on = false
+        thirdHarmonicSwitch.on = false
+        fourthHarmonicSwitch.on = false
+        fifthHarmonicSwitch.on = false
+
+    }
+    
     func firstHarmonicPickerSetup()
     {
 /*
@@ -158,13 +182,32 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         fifthHarmonicPicker.tag = 5
     }
     
-    func sliderControls()
+    func frequencyValueSliderSetup()
     {
-    //slider 1 ranges from 0-20K over a linear scale and increments by 100
-    
-    //slider 2 ranges from 0-100 over a linear scale and increments by 1
-    
-    //slider 3 ranges from .01-.99 over a linear scale and increments by .01
+        //slider 1 ranges from 0-20K over a linear scale and increments by 100
+        hundredHertzSlider.maximumValue = 20000
+        hundredHertzSlider.minimumValue = 0
+        hundredHertzSlider.value = 9000
+        
+        //slider 2 ranges from 0-100 over a linear scale and increments by 10
+        tenHertzSlider.maximumValue = 90
+        tenHertzSlider.minimumValue = 0
+        tenHertzSlider.value = 40
+        
+        //slider 3 ranges from 0-10 over a linear scale and increments by 1
+        oneHertzSlider.maximumValue = 9
+        oneHertzSlider.minimumValue = 0
+        oneHertzSlider.value = 4
+        
+        //slider 4 ranges from .0 - .9 over a linear scale and increments by .1
+        tenthHertzSlider.maximumValue = 0.9
+        tenthHertzSlider.minimumValue = 0
+        tenthHertzSlider.value = 0.4
+        
+        //slider 5 ranges from .00-.09 over a linear scale and increments by .01
+        hundredthHertzSlider.maximumValue = 0.09
+        hundredthHertzSlider.minimumValue = 0
+        hundredthHertzSlider.value = 0.04
     }
 
 }

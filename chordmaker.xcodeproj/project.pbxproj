@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01E96041A6633C500EDB49D /* HarmonicCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E96031A6633C500EDB49D /* HarmonicCalculator.swift */; };
 		C0F0E9A81A594163009529FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0E9A71A594163009529FA /* AppDelegate.swift */; };
 		C0F0E9AA1A594163009529FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0E9A91A594163009529FA /* ViewController.swift */; };
 		C0F0E9AD1A594163009529FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F0E9AB1A594163009529FA /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C01E96031A6633C500EDB49D /* HarmonicCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicCalculator.swift; sourceTree = "<group>"; };
 		C0F0E9A21A594163009529FA /* chordmaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chordmaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F0E9A61A594163009529FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0F0E9A71A594163009529FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F0E9A71A594163009529FA /* AppDelegate.swift */,
+				C01E96031A6633C500EDB49D /* HarmonicCalculator.swift */,
 				C0F0E9A91A594163009529FA /* ViewController.swift */,
 				C0F0E9AB1A594163009529FA /* Main.storyboard */,
 				C0F0E9AE1A594163009529FA /* Images.xcassets */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F0E9AA1A594163009529FA /* ViewController.swift in Sources */,
+				C01E96041A6633C500EDB49D /* HarmonicCalculator.swift in Sources */,
 				C0F0E9A81A594163009529FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +413,7 @@
 				C0F0E9C31A594164009529FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0F0E9C41A594164009529FA /* Build configuration list for PBXNativeTarget "chordmakerTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				C0F0E9C61A594164009529FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

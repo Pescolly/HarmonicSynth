@@ -8,21 +8,29 @@
 
 import Foundation
 
-let kOctave = 1
-let kPerfectFifth = 2
-let kMajor3 = 3
-let kMinor3 = 4
-let kSeptimalMinorThird = 5
+let kOctave = "Octave"
+let kPerfectFifth = "P5"
+let kMajor3 = "M3"
+let kMinor3 = "m3"
+let kSeptimalMinorThird = "7m3"
+let kMajorSecond = "M2"
+let kSeptimalMajorSecond = "7M2"
+let kMinorWholeTone = "m2"
+let kGreaterUnidecimalNeutralSecond = "GN2"
+let kLesserUnidecimalNeutralSecond = "lN2"
+let kTridecimalTwoThirds = "2:3"
+let kTwoThirds = "2:3"
+
 
 //                                          ******* ALL HARMONIC MULTIPLIERS ARE WRONG!!!!!!! ******
 
-func calculateFirstHarmonic(fundamental: float_t, harmonicSelection: Int) -> float_t
+func calculateFirstHarmonic(fundamental: Float, harmonicSelection: String) -> Float
 {
     /*
         octave (P8)	1,200.0	0.0
         just perfect fifth	P8 + just perfect fifth (P5)	1,902.0	702.0
     */
-    var firstHarmonic:float_t?
+    var firstHarmonic:Float?
     
     if harmonicSelection == kOctave
     {
@@ -37,10 +45,11 @@ func calculateFirstHarmonic(fundamental: float_t, harmonicSelection: Int) -> flo
     {
         firstHarmonic = 0
     }
+    
     return firstHarmonic!
 }
 
-func calculateSecondHarmonic(fundamental: float_t, harmonicSelection: Int) -> float_t
+func calculateSecondHarmonic(fundamental: Float, harmonicSelection: String) -> Float
 {
     /*
     second octave	2P8	2,400.0	0.0
@@ -48,7 +57,7 @@ func calculateSecondHarmonic(fundamental: float_t, harmonicSelection: Int) -> fl
     just minor third	2P8 + P5	3,102.0	702.0
     septimal minor third	2P8 + septimal minor seventh (m7)	3,368.8	968.8
     */
-    var secondHarmonic:float_t?
+    var secondHarmonic:Float?
     if harmonicSelection == kOctave
     {
         secondHarmonic = fundamental * 3
@@ -56,21 +65,104 @@ func calculateSecondHarmonic(fundamental: float_t, harmonicSelection: Int) -> fl
     else if harmonicSelection == kMajor3
     {
         secondHarmonic = fundamental * 3
-        secondHarmonic = secondHarmonic! + (fundamental * 1.25)          //todo: FIX!
+        secondHarmonic = secondHarmonic! + (secondHarmonic! * 1.25)          //todo: FIX!
     }
     else if harmonicSelection == kMinor3
     {
         secondHarmonic = fundamental * 3
-        secondHarmonic = secondHarmonic! + (fundamental * 1.5)   //todo: FIX!
+        secondHarmonic = secondHarmonic! + (secondHarmonic! * (3/2))   //todo: FIX!
     }
     else if harmonicSelection == kSeptimalMinorThird
     {
         secondHarmonic = fundamental * 3
-        secondHarmonic = secondHarmonic! + (fundamental * 1.67)
+        secondHarmonic = secondHarmonic! + (secondHarmonic! * 1.67)
     }
     else
     {
         secondHarmonic = 0
     }
     return secondHarmonic!
+}
+
+func calculateThirdHarmonic(fundamental: Float, harmonicSelection: String) -> Float
+{
+    /*
+    septimal major second	3P8	3,600.0	0.0
+    Pythagorean major second	3P8 + Pythagorean major second (M2)	3,803.9	203.9
+    just minor whole tone	3P8 + just M3	3,986.3	386.3
+    greater unidecimal neutral second	3P8 + lesser undecimal tritone	4,151.3	551.3
+    lesser unidecimal neutral second	3P8 + P5	4,302.0	702.0
+    tridecimal 2/3-tone	3P8 + tridecimal neutral sixth (n6)	4,440.5	840.5
+    2/3-tone	3P8 + P5 + septimal minor third (m3)	4,568.8	968.8
+    septimal (or major) diatonic semitone	3P8 + just major seventh (M7)	4,688.3	1,088.3
+    */
+    
+    var thirdHarmonic:Float?
+    
+    if harmonicSelection == kOctave
+    {
+        thirdHarmonic = fundamental * 4
+    }
+    else if harmonicSelection == kMajorSecond
+    {
+        thirdHarmonic = fundamental * 4
+        thirdHarmonic = thirdHarmonic! + (thirdHarmonic! * (9/8))
+    }
+    else if harmonicSelection == kSeptimalMajorSecond
+    {
+        thirdHarmonic = fundamental * 4
+        thirdHarmonic = thirdHarmonic! + (thirdHarmonic! * (8/7))
+    }
+    else if harmonicSelection == kMinorWholeTone            // AKA minorSecond
+    {
+        thirdHarmonic = fundamental * 4
+        thirdHarmonic = thirdHarmonic! + (thirdHarmonic! * (16/15))
+    }
+    else if harmonicSelection == kGreaterUnidecimalNeutralSecond
+    {
+        thirdHarmonic = fundamental * 4
+        thirdHarmonic = thirdHarmonic! + (thirdHarmonic! * (15/11))
+    }
+    else if harmonicSelection == kLesserUnidecimalNeutralSecond
+    {
+        thirdHarmonic = fundamental * 4
+        thirdHarmonic = thirdHarmonic! + (thirdHarmonic! * (3/2))
+    }
+    else
+    {
+        thirdHarmonic = 0
+    }
+    return thirdHarmonic!
+}
+
+func calculateFourthHarmonic(fundamental: Float, harmonicSelection: String) -> Float
+{
+    var fourthHarmonic:Float?
+    
+    if harmonicSelection == kOctave
+    {
+        fourthHarmonic = fundamental * 5
+    }
+    else
+    {
+        fourthHarmonic = 0
+    }
+    
+    return fourthHarmonic!
+}
+
+func calculateFifthHarmonic(fundamental: Float, harmonicSelection: String) -> Float
+{
+    var fifthHarmonic:Float?
+    
+    if harmonicSelection == kOctave
+    {
+        fifthHarmonic = fundamental * 6
+    }
+    else
+    {
+        fifthHarmonic = 0
+    }
+    
+    return fifthHarmonic!
 }

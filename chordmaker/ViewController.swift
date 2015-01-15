@@ -29,11 +29,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var fourthHarmonicSwitch: UISwitch!
     @IBOutlet weak var fifthHarmonicSwitch: UISwitch!
 
-    let firstHarmonicPickerData = ["1st", "Perfect 5th"]
-    let secondHarmonicPickerData = ["2nd", "2nd + M3", "M3", "2nd + m3", "m3", "m7"]
-    let thirdHarmonicPickerData = ["3rd", "3rd + M2", "3rd + M3", "3rd + Tri", "3rd + 5th", "3rd + 6th", "P8 + P5 + m3", "3rd + M7"]
-    let fourthHarmonicPickerData = ["4th"]
-    let fifthHarmonicPickerData = ["5th"]
+    let firstHarmonicPickerData = [kOctave, kPerfectFifth]
+    let secondHarmonicPickerData = [kOctave, kMajor3, kMinor3, kSeptimalMinorThird]
+    let thirdHarmonicPickerData = [kOctave, kMajorSecond, kMinorWholeTone, kGreaterUnidecimalNeutralSecond, kLesserUnidecimalNeutralSecond]
+    let fourthHarmonicPickerData = [kOctave]
+    let fifthHarmonicPickerData = [kOctave]
     
     var fundamentalFrequency: Float?
     

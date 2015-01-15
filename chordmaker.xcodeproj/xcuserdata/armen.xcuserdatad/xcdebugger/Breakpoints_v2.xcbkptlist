@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chordmaker/HarmonicCalculator.swift"
-            timestampString = "442907331.112561"
+            timestampString = "442998178.99299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "calculateFirstHarmonic(_:_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -14,8 +14,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var hundredHertzSlider: UISlider!
     @IBOutlet weak var tenHertzSlider: UISlider!
     @IBOutlet weak var oneHertzSlider: UISlider!
-    @IBOutlet weak var tenthHertzSlider: UISlider!
-    @IBOutlet weak var hundredthHertzSlider: UISlider!
+    @IBOutlet weak var oneTenthHertzSlider: UISlider!
+    @IBOutlet weak var oneHundrethHertzSlider: UISlider!
     
     @IBOutlet weak var firstHarmonicPicker: UIPickerView!
     @IBOutlet weak var secondHarmonicPicker: UIPickerView!
@@ -28,14 +28,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var thirdHarmonicSwitch: UISwitch!
     @IBOutlet weak var fourthHarmonicSwitch: UISwitch!
     @IBOutlet weak var fifthHarmonicSwitch: UISwitch!
-
+    
+    @IBOutlet var fundamentalFrequencyOutput: UITextField!
+    
     let firstHarmonicPickerData = [kOctave, kPerfectFifth]
     let secondHarmonicPickerData = [kOctave, kMajor3, kMinor3, kSeptimalMinorThird]
     let thirdHarmonicPickerData = [kOctave, kMajorSecond, kMinorWholeTone, kGreaterUnidecimalNeutralSecond, kLesserUnidecimalNeutralSecond]
     let fourthHarmonicPickerData = [kOctave]
     let fifthHarmonicPickerData = [kOctave]
     
-    var fundamentalFrequency: Float?
+    var mFundamentalFrequency: Float? = 1000
+    
+    var mWaveformGenerator:WaveformGenerator?
     
     override func viewDidLoad()
     {
@@ -52,6 +56,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         //setup sliders to adjust frequency
         frequencyValueSliderSetup()
+        
+        //setup audioengine/ waveform gen
+        mWaveformGenerator = WaveformGenerator(fundamental: mFundamentalFrequency!)
+        
     }
 
     override func didReceiveMemoryWarning()
@@ -184,31 +192,85 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func frequencyValueSliderSetup()
     {
+        //        NSLog("Running frequency value slider setup")
         //slider 1 ranges from 0-20K over a linear scale and increments by 100
-        hundredHertzSlider.maximumValue = 20000
+        hundredHertzSlider.maximumValue = 199
         hundredHertzSlider.minimumValue = 0
-        hundredHertzSlider.value = 9000
+        hundredHertzSlider.continuous = true
+        hundredHertzSlider.value = 10
+        
         
         //slider 2 ranges from 0-100 over a linear scale and increments by 10
-        tenHertzSlider.maximumValue = 90
+        tenHertzSlider.maximumValue = 9
         tenHertzSlider.minimumValue = 0
-        tenHertzSlider.value = 40
+        tenHertzSlider.continuous = true
+        tenHertzSlider.value = 0
         
         //slider 3 ranges from 0-10 over a linear scale and increments by 1
         oneHertzSlider.maximumValue = 9
         oneHertzSlider.minimumValue = 0
-        oneHertzSlider.value = 4
+        oneHertzSlider.continuous = true
+        oneHertzSlider.value = 0
         
         //slider 4 ranges from .0 - .9 over a linear scale and increments by .1
-        tenthHertzSlider.maximumValue = 0.9
-        tenthHertzSlider.minimumValue = 0
-        tenthHertzSlider.value = 0.4
+        oneTenthHertzSlider.maximumValue = 9
+        oneTenthHertzSlider.minimumValue = 0
+        oneTenthHertzSlider.continuous = true
+        oneTenthHertzSlider.value = 0
         
         //slider 5 ranges from .00-.09 over a linear scale and increments by .01
-        hundredthHertzSlider.maximumValue = 0.09
-        hundredthHertzSlider.minimumValue = 0
-        hundredthHertzSlider.value = 0.04
+        oneHundrethHertzSlider.maximumValue = 9
+        oneHundrethHertzSlider.minimumValue = 0
+        oneHundrethHertzSlider.continuous = true
+        oneHundrethHertzSlider.value = 0
     }
 
+    @IBAction func octaveIncrement(sender: UIButton)
+    {
+        
+        var newFundamentalFrequency = mFundamentalFrequency! * 2
+        if newFundamentalFrequency < 20000
+        {
+            mFundamentalFrequency = newFundamentalFrequency
+            mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
+            fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+        }
+    }
+    
+    @IBAction func octaveDecrement(sender: UIButton)
+    {
+        var newFundamentalFrequency = mFundamentalFrequency! / 2
+        if newFundamentalFrequency > 20
+        {
+            mFundamentalFrequency = newFundamentalFrequency
+            mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
+            fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+        }
+    }
+    
+    @IBAction func frequencyValueSlidersChanged(sender: UISlider)
+    {
+        let hundredHertzSliderValue:Int = Int(hundredHertzSlider.value) * 100
+        let tenHertzSliderValue:Int = Int(tenHertzSlider.value) * 10
+        let oneHertzSliderValue:Int = Int(oneHertzSlider.value)
+        let oneTenthHertzSliderValue:Float = Float(Int(oneTenthHertzSlider.value)) / 10
+        let oneHundrethHertzSliderValue:Float = Float(Int(oneHundrethHertzSlider.value)) / 100
+        
+        NSLog("\(hundredHertzSliderValue) + \(tenHertzSliderValue)")
+        mFundamentalFrequency = Float(hundredHertzSliderValue) + Float(tenHertzSliderValue) + Float(oneHertzSliderValue) + oneTenthHertzSliderValue + oneHundrethHertzSliderValue
+        mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
+        fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+    }
+    
+    @IBAction func startOscillation(sender: UIButton)
+    {
+        mWaveformGenerator?.startOscillation()
+    }
+    
+    @IBAction func stopOscillator(sender: UIButton)
+    {
+        mWaveformGenerator?.stopOscillation()
+    }
+    
 }
 

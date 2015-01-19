@@ -18,27 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1000.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9n5-wY-Ov0">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1000.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9n5-wY-Ov0">
                                 <rect key="frame" x="413" y="24" width="97" height="30"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES" updatesFrequently="YES"/>
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="dAz-tb-ha3"/>
+                                    <constraint firstAttribute="width" constant="97" id="dAz-tb-ha3">
+                                        <variation key="heightClass=regular" constant="110"/>
+                                    </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="dAz-tb-ha3"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="397" y="28" width="150" height="30"/>
                                     <mask key="constraints">
                                         <include reference="dAz-tb-ha3"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="fundamentalFrequncyChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="gXj-1A-1Sy"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Fundamental" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFR-xb-yht">
                                 <rect key="frame" x="8" y="24" width="110" height="21"/>
@@ -56,59 +62,6 @@
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="TTY-aD-YaC"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9dz-Nk-4MZ" userLabel="HundredHertzSlider">
-                                <rect key="frame" x="80" y="58" width="458" height="31"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9qY-gz-H2Y" userLabel="TenHertzSlider">
-                                <rect key="frame" x="80" y="58" width="458" height="31"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3kJ-aG-kWP" userLabel="SingleHertzSlider">
-                                <rect key="frame" x="80" y="96" width="458" height="31"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RCv-gQ-w7b" userLabel="HundredthHertz">
-                                <rect key="frame" x="80" y="134" width="458" height="31"/>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BzZ-Za-jU1" userLabel="TenthHertz">
-                                <rect key="frame" x="80" y="134" width="458" height="31"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="+ 0.01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9em-A5-gdW">
-                                <rect key="frame" x="8" y="138" width="52" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="mFz-9I-LmN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="mFz-9I-LmN"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="mFz-9I-LmN"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="+ 1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3J-Ix-AWT">
-                                <rect key="frame" x="8" y="100" width="52" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="b6m-Us-rlL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="b6m-Us-rlL"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="b6m-Us-rlL"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -131,12 +84,112 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="sxy-Oe-D27">
-                                <rect key="frame" x="262" y="219" width="94" height="29"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="278" y="271" width="94" height="29"/>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="9dz-Nk-4MZ" userLabel="HundredHertzSlider">
+                                <rect key="frame" x="80" y="58" width="458" height="31"/>
+                                <connections>
+                                    <action selector="frequencyValueSlidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="y4r-Xp-ZTV"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq4-BS-Afw">
+                                <rect key="frame" x="8" y="62" width="52" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="snQ-bx-W5o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="snQ-bx-W5o"/>
+                                    </mask>
                                 </variation>
-                            </stepper>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="snQ-bx-W5o"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="9qY-gz-H2Y" userLabel="TenHertzSlider">
+                                <rect key="frame" x="80" y="58" width="458" height="31"/>
+                                <connections>
+                                    <action selector="frequencyValueSlidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UFL-0V-x58"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="+ 1.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3J-Ix-AWT">
+                                <rect key="frame" x="8" y="100" width="52" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="b6m-Us-rlL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="b6m-Us-rlL"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="b6m-Us-rlL"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3kJ-aG-kWP" userLabel="SingleHertzSlider">
+                                <rect key="frame" x="80" y="96" width="458" height="31"/>
+                                <connections>
+                                    <action selector="frequencyValueSlidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="f06-77-7je"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 0.10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcW-9t-Dxt">
+                                <rect key="frame" x="8" y="138" width="52" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fUO-2f-TJY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fUO-2f-TJY"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="fUO-2f-TJY"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BzZ-Za-jU1" userLabel="TenthHertz">
+                                <rect key="frame" x="80" y="134" width="458" height="31"/>
+                                <connections>
+                                    <action selector="frequencyValueSlidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uwT-jw-zTv"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="+ 0.01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9em-A5-gdW">
+                                <rect key="frame" x="8" y="138" width="52" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="mFz-9I-LmN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mFz-9I-LmN"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="mFz-9I-LmN"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RCv-gQ-w7b" userLabel="HundredthHertz">
+                                <rect key="frame" x="80" y="134" width="458" height="31"/>
+                                <connections>
+                                    <action selector="frequencyValueSlidersChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="HDk-gj-caL"/>
+                                </connections>
+                            </slider>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bWg-HO-sPP" userLabel="FirstHarmonicPicker">
                                 <rect key="frame" x="59" y="418" width="95" height="162"/>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
@@ -230,8 +283,8 @@
                                         <exclude reference="xKd-gQ-0YP"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="295" y="308" width="60" height="21"/>
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="304" y="308" width="60" height="21"/>
                                     <mask key="constraints">
                                         <include reference="xKd-gQ-0YP"/>
                                     </mask>
@@ -259,6 +312,9 @@
                                         <include reference="tCC-QE-uI8"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="startOscillation:" destination="BYZ-38-t0r" eventType="touchDown" id="pZu-US-kFC"/>
+                                </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SEZ-lA-hRC">
                                 <rect key="frame" x="185" y="379" width="51" height="31"/>
@@ -285,51 +341,38 @@
                                 <state key="normal" title="Stop">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopOscillator:" destination="BYZ-38-t0r" eventType="touchDown" id="W34-9J-ZQ1"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq4-BS-Afw">
-                                <rect key="frame" x="8" y="62" width="52" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="snQ-bx-W5o"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="snQ-bx-W5o"/>
-                                    </mask>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9j-lt-gvT" userLabel="DecrementOctaveButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="-">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="277" y="270" width="46" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="snQ-bx-W5o"/>
-                                    </mask>
+                                <connections>
+                                    <action selector="octaveDecrement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iEe-Vl-WDb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QoW-NL-KMp" userLabel="IncrementOctaveButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="331" y="270" width="46" height="30"/>
                                 </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 0.10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcW-9t-Dxt">
-                                <rect key="frame" x="8" y="138" width="52" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="fUO-2f-TJY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="fUO-2f-TJY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="fUO-2f-TJY"/>
-                                    </mask>
-                                </variation>
-                            </label>
+                                <connections>
+                                    <action selector="octaveIncrement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GvK-NT-HCr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Xg-sT-Q8Q" firstAttribute="top" secondItem="sxy-Oe-D27" secondAttribute="bottom" constant="8" symbolic="YES" id="0YM-bu-NxJ"/>
                             <constraint firstItem="gvb-No-rVp" firstAttribute="centerX" secondItem="HPu-dg-6cs" secondAttribute="centerX" id="0cx-ra-E4S"/>
-                            <constraint firstItem="yPU-43-byh" firstAttribute="top" secondItem="sxy-Oe-D27" secondAttribute="top" id="2oC-3Y-Zxk"/>
                             <constraint firstItem="9em-A5-gdW" firstAttribute="leading" secondItem="bWg-HO-sPP" secondAttribute="leading" id="4as-re-cJG"/>
                             <constraint firstItem="MLn-RC-PxY" firstAttribute="leading" secondItem="gvb-No-rVp" secondAttribute="trailing" constant="60" id="4lg-Rc-5YD"/>
                             <constraint firstItem="wmp-My-rXD" firstAttribute="top" secondItem="4vm-W2-XyF" secondAttribute="bottom" constant="45" id="5R8-hp-0lq"/>
@@ -365,7 +408,6 @@
                             <constraint firstItem="9dz-Nk-4MZ" firstAttribute="top" secondItem="9n5-wY-Ov0" secondAttribute="bottom" constant="8" id="QUF-hw-I5E"/>
                             <constraint firstItem="3kJ-aG-kWP" firstAttribute="leading" secondItem="x3J-Ix-AWT" secondAttribute="trailing" constant="6" id="RPc-1s-jOi"/>
                             <constraint firstItem="cj2-2g-wwN" firstAttribute="leading" secondItem="MLn-RC-PxY" secondAttribute="trailing" constant="48" id="SaR-74-Ux1"/>
-                            <constraint firstItem="9dz-Nk-4MZ" firstAttribute="centerX" secondItem="sxy-Oe-D27" secondAttribute="centerX" id="UIe-u4-T21"/>
                             <constraint firstItem="x3J-Ix-AWT" firstAttribute="leading" secondItem="Vq4-BS-Afw" secondAttribute="leading" id="UPS-hk-yAB"/>
                             <constraint firstItem="4vm-W2-XyF" firstAttribute="trailing" secondItem="yPU-43-byh" secondAttribute="trailing" id="V1C-fd-fib"/>
                             <constraint firstItem="Vq4-BS-Afw" firstAttribute="top" secondItem="FtS-y7-m96" secondAttribute="bottom" constant="18" id="V8x-18-Txu"/>
@@ -380,7 +422,6 @@
                             <constraint firstItem="x3J-Ix-AWT" firstAttribute="top" secondItem="Vq4-BS-Afw" secondAttribute="bottom" constant="14" id="eve-az-ep4"/>
                             <constraint firstItem="Vq4-BS-Afw" firstAttribute="leading" secondItem="FtS-y7-m96" secondAttribute="leading" id="fD4-Yj-7Nd"/>
                             <constraint firstItem="7hU-L7-ujQ" firstAttribute="leading" secondItem="bWg-HO-sPP" secondAttribute="trailing" constant="8" symbolic="YES" id="fMH-cZ-qOX"/>
-                            <constraint firstItem="sxy-Oe-D27" firstAttribute="centerX" secondItem="7Xg-sT-Q8Q" secondAttribute="centerX" id="faz-a7-zEK"/>
                             <constraint firstItem="9dz-Nk-4MZ" firstAttribute="leading" secondItem="FtS-y7-m96" secondAttribute="trailing" constant="6" id="hSZ-l9-L6O"/>
                             <constraint firstItem="MLn-RC-PxY" firstAttribute="top" secondItem="cj2-2g-wwN" secondAttribute="top" id="hni-Ra-Dom"/>
                             <constraint firstItem="fhc-pm-Y3A" firstAttribute="top" secondItem="ejF-Hc-9Md" secondAttribute="top" id="ijw-Fs-aKn"/>
@@ -406,17 +447,18 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="Vq4-BS-Afw"/>
                                 <exclude reference="9qY-gz-H2Y"/>
+                                <exclude reference="fcW-9t-Dxt"/>
                                 <exclude reference="BzZ-Za-jU1"/>
                                 <exclude reference="yPU-43-byh"/>
                                 <exclude reference="4vm-W2-XyF"/>
-                                <exclude reference="Vq4-BS-Afw"/>
-                                <exclude reference="fcW-9t-Dxt"/>
+                                <exclude reference="q9j-lt-gvT"/>
+                                <exclude reference="QoW-NL-KMp"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="JRm-rM-Ugm"/>
                                 <exclude reference="V1C-fd-fib"/>
-                                <exclude reference="2oC-3Y-Zxk"/>
                                 <exclude reference="CGa-BU-Zb9"/>
                                 <exclude reference="ebJ-KF-CfE"/>
                                 <exclude reference="j2a-Tk-HOC"/>
@@ -441,7 +483,6 @@
                                 <exclude reference="I1T-dR-F22"/>
                                 <exclude reference="KyP-ob-Kx8"/>
                                 <exclude reference="QUF-hw-I5E"/>
-                                <exclude reference="UIe-u4-T21"/>
                                 <exclude reference="eul-1Y-JhD"/>
                                 <exclude reference="hSZ-l9-L6O"/>
                                 <exclude reference="kNK-BO-GpX"/>
@@ -458,8 +499,6 @@
                                 <exclude reference="VRt-dT-omr"/>
                                 <exclude reference="etf-gh-wC6"/>
                                 <exclude reference="lm7-cN-Y4g"/>
-                                <exclude reference="faz-a7-zEK"/>
-                                <exclude reference="0YM-bu-NxJ"/>
                                 <exclude reference="5R8-hp-0lq"/>
                                 <exclude reference="CMj-Uu-fcC"/>
                                 <exclude reference="KZY-bc-xeE"/>
@@ -494,17 +533,18 @@
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
+                                <include reference="Vq4-BS-Afw"/>
                                 <include reference="9qY-gz-H2Y"/>
+                                <include reference="fcW-9t-Dxt"/>
                                 <include reference="BzZ-Za-jU1"/>
                                 <include reference="yPU-43-byh"/>
                                 <include reference="4vm-W2-XyF"/>
-                                <include reference="Vq4-BS-Afw"/>
-                                <include reference="fcW-9t-Dxt"/>
+                                <include reference="q9j-lt-gvT"/>
+                                <include reference="QoW-NL-KMp"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="JRm-rM-Ugm"/>
                                 <include reference="V1C-fd-fib"/>
-                                <include reference="2oC-3Y-Zxk"/>
                                 <include reference="CGa-BU-Zb9"/>
                                 <include reference="ebJ-KF-CfE"/>
                                 <include reference="j2a-Tk-HOC"/>
@@ -529,7 +569,6 @@
                                 <include reference="I1T-dR-F22"/>
                                 <include reference="KyP-ob-Kx8"/>
                                 <include reference="QUF-hw-I5E"/>
-                                <include reference="UIe-u4-T21"/>
                                 <include reference="eul-1Y-JhD"/>
                                 <include reference="hSZ-l9-L6O"/>
                                 <include reference="kNK-BO-GpX"/>
@@ -546,8 +585,6 @@
                                 <include reference="VRt-dT-omr"/>
                                 <include reference="etf-gh-wC6"/>
                                 <include reference="lm7-cN-Y4g"/>
-                                <include reference="faz-a7-zEK"/>
-                                <include reference="0YM-bu-NxJ"/>
                                 <include reference="5R8-hp-0lq"/>
                                 <include reference="CMj-Uu-fcC"/>
                                 <include reference="KZY-bc-xeE"/>
@@ -582,19 +619,20 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="HundredHertzSlider" destination="9dz-Nk-4MZ" id="yfn-Cr-mqF"/>
-                        <outlet property="HundredthHertzSlider" destination="RCv-gQ-w7b" id="HHT-UT-aJy"/>
-                        <outlet property="OneHertzSlider" destination="3kJ-aG-kWP" id="0Ny-zz-bpS"/>
-                        <outlet property="TenHertzSlider" destination="9qY-gz-H2Y" id="0Y5-wR-4Se"/>
-                        <outlet property="TenthHertzSlider" destination="BzZ-Za-jU1" id="hwu-2c-5BF"/>
                         <outlet property="fifthHarmonicPicker" destination="fhc-pm-Y3A" id="rwA-E4-zjP"/>
                         <outlet property="fifthHarmonicSwitch" destination="cj2-2g-wwN" id="QJv-rA-XTc"/>
                         <outlet property="firstHarmonicPicker" destination="bWg-HO-sPP" id="tCS-OO-R4X"/>
                         <outlet property="firstHarmonicSwitch" destination="wmp-My-rXD" id="sDF-sJ-K9q"/>
                         <outlet property="fourthHarmonicPicker" destination="ejF-Hc-9Md" id="BPN-fE-EhE"/>
                         <outlet property="fourthHarmonicSwitch" destination="MLn-RC-PxY" id="szO-vj-ky2"/>
+                        <outlet property="fundamentalFrequencyOutput" destination="9n5-wY-Ov0" id="9v8-H1-IdB"/>
+                        <outlet property="hundredHertzSlider" destination="9dz-Nk-4MZ" id="niX-68-a8B"/>
+                        <outlet property="oneHertzSlider" destination="3kJ-aG-kWP" id="DaR-ft-EUK"/>
+                        <outlet property="oneHundrethHertzSlider" destination="RCv-gQ-w7b" id="IPL-5a-4iE"/>
+                        <outlet property="oneTenthHertzSlider" destination="BzZ-Za-jU1" id="bPi-in-Yct"/>
                         <outlet property="secondHarmonicPicker" destination="7hU-L7-ujQ" id="8fD-oQ-8MI"/>
                         <outlet property="secondHarmonicSwitch" destination="SEZ-lA-hRC" id="Mgf-xi-a69"/>
+                        <outlet property="tenHertzSlider" destination="9qY-gz-H2Y" id="0ur-Wq-h5q"/>
                         <outlet property="thirdHarmonicPicker" destination="HPu-dg-6cs" id="eZd-Wb-8uD"/>
                         <outlet property="thirdHarmonicSwitch" destination="gvb-No-rVp" id="j9v-9g-ZGY"/>
                     </connections>

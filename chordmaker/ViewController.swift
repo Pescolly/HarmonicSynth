@@ -31,6 +31,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet var fundamentalFrequencyOutput: UITextField!
     
+    @IBOutlet var mDrawView: UIView!
+    
     let firstHarmonicPickerData = [kOctave, kPerfectFifth]
     let secondHarmonicPickerData = [kOctave, kMajor3, kMinor3, kSeptimalMinorThird]
     let thirdHarmonicPickerData = [kOctave, kMajorSecond, kMinorWholeTone, kGreaterUnidecimalNeutralSecond, kLesserUnidecimalNeutralSecond]
@@ -38,6 +40,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let fifthHarmonicPickerData = [kOctave]
     
     var mFundamentalFrequency: Float? = 1000
+    var mFirstHarmonicFrequency: Float?
+    var mSecondHarmonicFrequency: Float?
+    var mThirdHarmonicFrequency: Float?
+    var mFourthHarmonicFrequency: Float?
+    var mFifthHarmonicFrequency: Float?
     
     var mWaveformGenerator:WaveformGenerator?
     
@@ -57,8 +64,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //setup sliders to adjust frequency
         frequencyValueSliderSetup()
         
+        //setup default harmonics
+       
+        mFirstHarmonicFrequency = calculateFirstHarmonic(mFundamentalFrequency!, kOctave)
+        mSecondHarmonicFrequency = calculateSecondHarmonic(mFundamentalFrequency!, kOctave)
+        mThirdHarmonicFrequency = calculateThirdHarmonic(mFundamentalFrequency!, kOctave)
+        mFourthHarmonicFrequency = calculateFourthHarmonic(mFundamentalFrequency!, kOctave)
+        mFifthHarmonicFrequency = calculateFifthHarmonic(mFundamentalFrequency!, kOctave)
+        
+        
         //setup audioengine/ waveform gen
-        mWaveformGenerator = WaveformGenerator(fundamental: mFundamentalFrequency!)
+        mWaveformGenerator = WaveformGenerator(_fundamental: mFundamentalFrequency!, _firstHarmonic: mFirstHarmonicFrequency!, _secondHarmonic: mSecondHarmonicFrequency!, _thirdHarmonic: mThirdHarmonicFrequency!, _fourthHarmonic: mFourthHarmonicFrequency!, _fifthHarmonic: mFifthHarmonicFrequency!)
         
     }
 
@@ -141,45 +157,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func firstHarmonicPickerSetup()
     {
-/*
-        octave (P8)	1,200.0	0.0
-        just perfect fifth	P8 + just perfect fifth (P5)	1,902.0	702.0
-*/
         firstHarmonicPicker.delegate = self
         firstHarmonicPicker.tag = 1
     }
     
     func secondHarmonicPickerSetup()
     {
-/*
-	second octave	2P8	2,400.0	0.0
-	just major third	2P8 + just major third (M3)	2,786.3	386.3
-	just minor third	2P8 + P5	3,102.0	702.0
-	septimal minor third	2P8 + septimal minor seventh (m7)	3,368.8	968.8
-*/
         secondHarmonicPicker.delegate = self
         secondHarmonicPicker.tag = 2
     }
     
     func thirdHarmonicPickerSetup()
     {
-/*
-        septimal major second	3P8	3,600.0	0.0
-        Pythagorean major second	3P8 + Pythagorean major second (M2)	3,803.9	203.9
-        just minor whole tone	3P8 + just M3	3,986.3	386.3
-        greater unidecimal neutral second	3P8 + lesser undecimal tritone	4,151.3	551.3
-        lesser unidecimal neutral second	3P8 + P5	4,302.0	702.0
-        tridecimal 2/3-tone	3P8 + tridecimal neutral sixth (n6)	4,440.5	840.5
-        2/3-tone	3P8 + P5 + septimal minor third (m3)	4,568.8	968.8
-        septimal (or major) diatonic semitone	3P8 + just major seventh (M7)	4,688.3	1,088.3
-*/
         thirdHarmonicPicker.delegate = self
         thirdHarmonicPicker.tag = 3
     }
     
     func fourthHarmonicPickerSetup()
     {
-        //just (or minor) diatonic semitone	4P8	4,800.0	0.0
         fourthHarmonicPicker.delegate = self
         fourthHarmonicPicker.tag = 4
     }
@@ -258,7 +253,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         NSLog("\(hundredHertzSliderValue) + \(tenHertzSliderValue)")
         mFundamentalFrequency = Float(hundredHertzSliderValue) + Float(tenHertzSliderValue) + Float(oneHertzSliderValue) + oneTenthHertzSliderValue + oneHundrethHertzSliderValue
+        
         mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
+        
+        mFirstHarmonicFrequency = calculateFirstHarmonic(mFundamentalFrequency!, kOctave)
+        NSLog("First harmonic frequency: \(mFirstHarmonicFrequency!)")
+        mWaveformGenerator?.harmonicOneChanged(mFirstHarmonicFrequency!)
+
+        
+        
         fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
     }
     
@@ -271,6 +274,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         mWaveformGenerator?.stopOscillation()
     }
+    
+    @IBAction func firstHarmonicSwitched(sender: UISwitch)
+    {
+        if sender.on == true
+        {
+            mWaveformGenerator?.mFirstHarmonicNodeConnected = true
+        }
+        if sender.on == false
+        {
+            mWaveformGenerator?.mFirstHarmonicNodeConnected = false
+        }
+    }
+    
     
 }
 

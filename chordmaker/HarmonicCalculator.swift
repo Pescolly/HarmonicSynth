@@ -45,7 +45,7 @@ func calculateFirstHarmonic(fundamental: Float, harmonicSelection: String) -> Fl
     {
         firstHarmonic = 0
     }
-    
+    NSLog("First harmonic calculated: \(firstHarmonic!)")
     return firstHarmonic!
 }
 

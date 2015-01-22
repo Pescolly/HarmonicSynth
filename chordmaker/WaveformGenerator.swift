@@ -42,6 +42,7 @@ class WaveformGenerator
                     
                 }
             }
+    
             if mFirstHarmonicNodeConnected == false
             {
                 mAudioEngine?.disconnectNodeOutput(mFirstHarmonicNode)
@@ -50,10 +51,97 @@ class WaveformGenerator
     }
 
     var mSecondHarmonicNodeConnected:Bool = false
+    {
+        didSet
+        {
+            if mSecondHarmonicNodeConnected == true
+            {
+                if mAudioEngine?.running != nil
+                {
+                    NSLog("connecting audio nodes, second harmonic frequency: \(mSecondHarmonicFrequency)")
+                    var buffer = getBuffer(mSecondHarmonicFrequency!, _node: mSecondHarmonicNode!)
+                    mAudioEngine?.connect(mSecondHarmonicNode, to: mMixerNode, format: nil)
+                    mSecondHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+                    mSecondHarmonicNode?.play()
+                }
+            }
+        
+            if mSecondHarmonicNodeConnected == false
+            {
+                mAudioEngine?.disconnectNodeOutput(mSecondHarmonicNode)
+            }
+        }
+    }
+    
     var mThirdHarmonicNodeConnected:Bool = false
+    {
+        didSet
+        {
+            if mThirdHarmonicNodeConnected == true
+            {
+                if mAudioEngine?.running != nil
+                {
+                    NSLog("connecting audio nodes, third harmonic frequency: \(mThirdHarmonicFrequency)")
+                    var buffer = getBuffer(mThirdHarmonicFrequency!, _node: mThirdHarmonicNode!)
+                    mAudioEngine?.connect(mThirdHarmonicNode, to: mMixerNode, format: nil)
+                    mThirdHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+                    mThirdHarmonicNode?.play()
+                }
+            }
+            
+            if mThirdHarmonicNodeConnected == false
+            {
+                mAudioEngine?.disconnectNodeOutput(mThirdHarmonicNode)
+            }
+        }
+    }
+    
     var mFourthHarmonicNodeConnected:Bool = false
+    {
+        didSet
+        {
+            if mFourthHarmonicNodeConnected == true
+            {
+                if mAudioEngine?.running != nil
+                {
+                    NSLog("connecting audio nodes, third harmonic frequency: \(mFourthHarmonicFrequency)")
+                    var buffer = getBuffer(mFourthHarmonicFrequency!, _node: mFourthHarmonicNode!)
+                    mAudioEngine?.connect(mFourthHarmonicNode, to: mMixerNode, format: nil)
+                    mFourthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+                    mFourthHarmonicNode?.play()
+                }
+            }
+            
+            if mFourthHarmonicNodeConnected == false
+            {
+                mAudioEngine?.disconnectNodeOutput(mFourthHarmonicNode)
+            }
+        }
+    }
+    
     var mFifthHarmonicNodeConnected:Bool = false
-
+    {
+        didSet
+        {
+            if mFifthHarmonicNodeConnected == true
+            {
+                if mAudioEngine?.running != nil
+                {
+                    NSLog("connecting audio nodes, third harmonic frequency: \(mFifthHarmonicFrequency)")
+                    var buffer = getBuffer(mFifthHarmonicFrequency!, _node: mFifthHarmonicNode!)
+                    mAudioEngine?.connect(mFifthHarmonicNode, to: mMixerNode, format: nil)
+                    mFifthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+                    mFifthHarmonicNode?.play()
+                }
+            }
+            
+            if mFifthHarmonicNodeConnected == false
+            {
+                mAudioEngine?.disconnectNodeOutput(mFifthHarmonicNode)
+            }
+        }
+    }
+    
     //frequencies for each node
     var mFundamentalFrequency: Float?
     var mFirstHarmonicFrequency: Float?
@@ -96,18 +184,22 @@ class WaveformGenerator
         mAudioEngine?.attachNode(mFirstHarmonicNode)
         mAudioEngine?.connect(mFirstHarmonicNode, to: mMixerNode, format: nil)
         
+        mAudioEngine?.attachNode(mSecondHarmonicNode)
+        mAudioEngine?.connect(mSecondHarmonicNode, to: mMixerNode, format: nil)
+        
+        mAudioEngine?.attachNode(mThirdHarmonicNode)
+        mAudioEngine?.connect(mThirdHarmonicNode, to: mMixerNode, format: nil)
+        
+        mAudioEngine?.attachNode(mFourthHarmonicNode)
+        mAudioEngine?.connect(mFourthHarmonicNode, to: mMixerNode, format: nil)
+        
+        mAudioEngine?.attachNode(mFifthHarmonicNode)
+        mAudioEngine?.connect(mFifthHarmonicNode, to: mMixerNode, format: nil)
+        
     }
     
     func startOscillation()
     {
-        //get fundamental
-        
-        //put waveform in PCM buffer
-        
-        //        let audioFrameCount:AVAudioFrameCount = AVAudioFrameCount(mBufferSize)
-        //let channelLayout:AVAudioChannelLayout = AVAudioChannelLayout(
-        
-        
         //start mAudioEngine
         mAudioEngine?.startAndReturnError(nil)
         
@@ -118,6 +210,7 @@ class WaveformGenerator
         mFundamentalNode?.play()
         
 
+        // check if nodes are connected, schedule buffers and play
         if mFirstHarmonicNodeConnected
         {
             NSLog("First harmonic connected")
@@ -125,22 +218,49 @@ class WaveformGenerator
             mFirstHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
             NSLog("Playing first harmonic")
             mFirstHarmonicNode?.play()
-            
         }
         
-/*        if mSecondHarmonicNodeConnected
+        if mSecondHarmonicNodeConnected
         {
             let buffer = getBuffer(mSecondHarmonicFrequency!, _node: mSecondHarmonicNode!)
             mSecondHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+            mSecondHarmonicNode?.play()
         }
-  */
+
+        if mThirdHarmonicNodeConnected
+        {
+            let buffer = getBuffer(mThirdHarmonicFrequency!, _node: mThirdHarmonicNode!)
+            mThirdHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+            mThirdHarmonicNode?.play()
+        }
+
+        if mFourthHarmonicNodeConnected
+        {
+            let buffer = getBuffer(mFourthHarmonicFrequency!, _node: mFourthHarmonicNode!)
+            mFourthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+            mFourthHarmonicNode?.play()
+        }
+        
+        if mFifthHarmonicNodeConnected
+        {
+            let buffer = getBuffer(mFifthHarmonicFrequency!, _node: mFifthHarmonicNode!)
+            mFifthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+            mFifthHarmonicNode?.play()
+        }
         
      }
     
     func stopOscillation()
     {
+        //shutdown node players
         mFundamentalNode?.stop()
         mFirstHarmonicNode?.stop()
+        mSecondHarmonicNode?.stop()
+        mThirdHarmonicNode?.stop()
+        mFourthHarmonicNode?.stop()
+        mFifthHarmonicNode?.stop()
+        
+        //shutdown engine
         mAudioEngine?.stop()
     }
     
@@ -161,7 +281,10 @@ class WaveformGenerator
     
     func harmonicOneChanged(_frequency: Float)
     {
+        //assign new frequency to instance variable
         mFirstHarmonicFrequency = _frequency
+        
+        //get new buffer and schedule
         var buffer = getBuffer(mFirstHarmonicFrequency!, _node: mFirstHarmonicNode!)
         mFirstHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
         mFirstHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
@@ -170,21 +293,48 @@ class WaveformGenerator
     
     func harmonicTwoChanged(_frequency: Float)
     {
-        
+        //assign new frequency to instance variable
+        mSecondHarmonicFrequency = _frequency
+
+        //get new buffer and schedule
+        var buffer = getBuffer(mSecondHarmonicFrequency!, _node: mSecondHarmonicNode!)
+        mSecondHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
+        mSecondHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
     }
     
     func harmonicThreeChanged(_frequency: Float)
     {
-        
+        //assign new frequency to instance variable
+        mThirdHarmonicFrequency = _frequency
+
+        //get new buffer and schedule
+        var buffer = getBuffer(mThirdHarmonicFrequency!, _node: mThirdHarmonicNode!)
+        mThirdHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
+        mThirdHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+
     }
     
     func harmonicFourChanged(_frequency: Float)
     {
+        //assign new frequency to instance variable
+        mFourthHarmonicFrequency = _frequency
+        
+        //get new buffer and schedule
+        var buffer = getBuffer(mFourthHarmonicFrequency!, _node: mFourthHarmonicNode!)
+        mFourthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
+        mFourthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
         
     }
     
     func harmonicFiveChanged(_frequency: Float)
     {
+        //assign new frequency to instance variable
+        mFifthHarmonicFrequency = _frequency
+
+        //get new buffer and schedule
+        var buffer = getBuffer(mFifthHarmonicFrequency!, _node: mFifthHarmonicNode!)
+        mFifthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
+        mFifthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
         
     }
     
@@ -192,10 +342,8 @@ class WaveformGenerator
     {
         NSLog("Getting buffer")
         let audioFormat:AVAudioFormat = _node.outputFormatForBus(0)
-        
         let sampleRate:Float = Float(mMixerNode!.outputFormatForBus(0).sampleRate)
         let channelCount = mMixerNode?.outputFormatForBus(0).channelCount
-        
         let frameLength:UInt32 = 100
         let buffer = AVAudioPCMBuffer(PCMFormat: audioFormat, frameCapacity: frameLength)
         buffer.frameLength = frameLength
@@ -205,6 +353,7 @@ class WaveformGenerator
             var val = sinf(_frequency*Float(i)*2*Float(M_PI) / sampleRate)
             buffer.floatChannelData.memory[i] = val
         }
+        
         NSLog("returning buffer")
         return buffer
     }

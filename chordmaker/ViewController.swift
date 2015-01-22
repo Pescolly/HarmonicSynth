@@ -40,11 +40,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let fifthHarmonicPickerData = [kOctave]
     
     var mFundamentalFrequency: Float? = 1000
-    var mFirstHarmonicFrequency: Float?
-    var mSecondHarmonicFrequency: Float?
-    var mThirdHarmonicFrequency: Float?
-    var mFourthHarmonicFrequency: Float?
-    var mFifthHarmonicFrequency: Float?
     
     var mWaveformGenerator:WaveformGenerator?
     
@@ -52,11 +47,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         super.viewDidLoad()
         //setup harmonic pickers
-        firstHarmonicPickerSetup()
-        secondHarmonicPickerSetup()
-        thirdHarmonicPickerSetup()
-        fourthHarmonicPickerSetup()
-        fifthHarmonicPickerSetup()
+        pickerSetup()
         
         //setup switch to turn harmonics on/off
         switchSetup()
@@ -64,17 +55,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //setup sliders to adjust frequency
         frequencyValueSliderSetup()
         
-        //setup default harmonics
-       
-        mFirstHarmonicFrequency = calculateFirstHarmonic(mFundamentalFrequency!, kOctave)
-        mSecondHarmonicFrequency = calculateSecondHarmonic(mFundamentalFrequency!, kOctave)
-        mThirdHarmonicFrequency = calculateThirdHarmonic(mFundamentalFrequency!, kOctave)
-        mFourthHarmonicFrequency = calculateFourthHarmonic(mFundamentalFrequency!, kOctave)
-        mFifthHarmonicFrequency = calculateFifthHarmonic(mFundamentalFrequency!, kOctave)
-        
-        
         //setup audioengine/ waveform gen
-        mWaveformGenerator = WaveformGenerator(_fundamental: mFundamentalFrequency!, _firstHarmonic: mFirstHarmonicFrequency!, _secondHarmonic: mSecondHarmonicFrequency!, _thirdHarmonic: mThirdHarmonicFrequency!, _fourthHarmonic: mFourthHarmonicFrequency!, _fifthHarmonic: mFifthHarmonicFrequency!)
+        mWaveformGenerator = WaveformGenerator(
+            _fundamental: mFundamentalFrequency!,
+            _firstHarmonic: calculateFirstHarmonic(mFundamentalFrequency!, kOctave),
+            _secondHarmonic: calculateSecondHarmonic(mFundamentalFrequency!, kOctave),
+            _thirdHarmonic: calculateThirdHarmonic(mFundamentalFrequency!, kOctave),
+            _fourthHarmonic: calculateFourthHarmonic(mFundamentalFrequency!, kOctave),
+            _fifthHarmonic: calculateFifthHarmonic(mFundamentalFrequency!, kOctave)
+        )
         
     }
 
@@ -145,6 +134,37 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if pickerView == firstHarmonicPicker
+        {
+            NSLog("first harmonic selected")
+            mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,
+                firstHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
+        }
+
+        if pickerView == secondHarmonicPicker
+        {
+            NSLog("second harmonic selected")
+            mWaveformGenerator?.harmonicTwoChanged(calculateSecondHarmonic(mFundamentalFrequency!, secondHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
+        }
+        
+        if pickerView == thirdHarmonicPicker
+        {
+            mWaveformGenerator?.harmonicThreeChanged(calculateThirdHarmonic(mFundamentalFrequency!, thirdHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
+        }
+        
+        if pickerView == fourthHarmonicPicker
+        {
+            mWaveformGenerator?.harmonicFourChanged(calculateFourthHarmonic(mFundamentalFrequency!, fourthHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
+        }
+        
+        if pickerView == fifthHarmonicPicker
+        {
+            mWaveformGenerator?.harmonicFiveChanged(calculateFifthHarmonic(mFundamentalFrequency!, fifthHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
+        }
+    }
+    
     func switchSetup()
     {
         firstHarmonicSwitch.on = false
@@ -152,35 +172,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         thirdHarmonicSwitch.on = false
         fourthHarmonicSwitch.on = false
         fifthHarmonicSwitch.on = false
-
     }
     
-    func firstHarmonicPickerSetup()
+    func pickerSetup()
     {
         firstHarmonicPicker.delegate = self
         firstHarmonicPicker.tag = 1
-    }
-    
-    func secondHarmonicPickerSetup()
-    {
         secondHarmonicPicker.delegate = self
         secondHarmonicPicker.tag = 2
-    }
-    
-    func thirdHarmonicPickerSetup()
-    {
         thirdHarmonicPicker.delegate = self
         thirdHarmonicPicker.tag = 3
-    }
-    
-    func fourthHarmonicPickerSetup()
-    {
         fourthHarmonicPicker.delegate = self
         fourthHarmonicPicker.tag = 4
-    }
-    
-    func fifthHarmonicPickerSetup()
-    {
         fifthHarmonicPicker.delegate = self
         fifthHarmonicPicker.tag = 5
     }
@@ -245,6 +248,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func frequencyValueSlidersChanged(sender: UISlider)
     {
+        //get fundamental frequency from sliders
         let hundredHertzSliderValue:Int = Int(hundredHertzSlider.value) * 100
         let tenHertzSliderValue:Int = Int(tenHertzSlider.value) * 10
         let oneHertzSliderValue:Int = Int(oneHertzSlider.value)
@@ -252,18 +256,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let oneHundrethHertzSliderValue:Float = Float(Int(oneHundrethHertzSlider.value)) / 100
         
         NSLog("\(hundredHertzSliderValue) + \(tenHertzSliderValue)")
-        mFundamentalFrequency = Float(hundredHertzSliderValue) + Float(tenHertzSliderValue) + Float(oneHertzSliderValue) + oneTenthHertzSliderValue + oneHundrethHertzSliderValue
+        
+        mFundamentalFrequency = Float(hundredHertzSliderValue) +
+            Float(tenHertzSliderValue) +
+            Float(oneHertzSliderValue) +
+            oneTenthHertzSliderValue +
+            oneHundrethHertzSliderValue
         
         mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
         
-        mFirstHarmonicFrequency = calculateFirstHarmonic(mFundamentalFrequency!, kOctave)
-        NSLog("First harmonic frequency: \(mFirstHarmonicFrequency!)")
-        mWaveformGenerator?.harmonicOneChanged(mFirstHarmonicFrequency!)
-
+        mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,
+            firstHarmonicPickerData[firstHarmonicPicker.selectedRowInComponent(0)]))
         
+        mWaveformGenerator?.harmonicTwoChanged(calculateSecondHarmonic(mFundamentalFrequency!, secondHarmonicPickerData[secondHarmonicPicker.selectedRowInComponent(0)]))
+        
+        mWaveformGenerator?.harmonicThreeChanged(calculateThirdHarmonic(mFundamentalFrequency!, thirdHarmonicPickerData[thirdHarmonicPicker.selectedRowInComponent(0)]))
+        
+        mWaveformGenerator?.harmonicFourChanged(calculateFourthHarmonic(mFundamentalFrequency!, fourthHarmonicPickerData[fourthHarmonicPicker.selectedRowInComponent(0)]))
+        
+        mWaveformGenerator?.harmonicFiveChanged(calculateFifthHarmonic(mFundamentalFrequency!, fifthHarmonicPickerData[fifthHarmonicPicker.selectedRowInComponent(0)]))
         
         fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
     }
+    
+    
     
     @IBAction func startOscillation(sender: UIButton)
     {
@@ -287,6 +303,52 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    @IBAction func secondHarmonicSwitch(sender: UISwitch)
+    {
+        if sender.on == true
+        {
+            mWaveformGenerator?.mSecondHarmonicNodeConnected = true
+        }
+        if sender.on == false
+        {
+            mWaveformGenerator?.mSecondHarmonicNodeConnected = false
+        }
+    }
     
+    @IBAction func thirdHarmonicSwitched(sender: UISwitch)
+    {
+        if sender.on == true
+        {
+            mWaveformGenerator?.mThirdHarmonicNodeConnected = true
+        }
+        if sender.on == false
+        {
+            mWaveformGenerator?.mThirdHarmonicNodeConnected = false
+        }
+    }
+    
+    @IBAction func fourthHarmonicSwitched(sender: UISwitch)
+    {
+        if sender.on == true
+        {
+            mWaveformGenerator?.mFourthHarmonicNodeConnected = true
+        }
+        if sender.on == false
+        {
+            mWaveformGenerator?.mFourthHarmonicNodeConnected = false
+        }
+    }
+    
+    @IBAction func fifthHarmonicSwitched(sender: UISwitch)
+    {
+        if sender.on == true
+        {
+            mWaveformGenerator?.mFifthHarmonicNodeConnected = true
+        }
+        if sender.on == false
+        {
+            mWaveformGenerator?.mFifthHarmonicNodeConnected = false
+        }
+    }
 }
 

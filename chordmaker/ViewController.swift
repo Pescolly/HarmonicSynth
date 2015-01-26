@@ -277,6 +277,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mWaveformGenerator?.harmonicFiveChanged(calculateFifthHarmonic(mFundamentalFrequency!, fifthHarmonicPickerData[fifthHarmonicPicker.selectedRowInComponent(0)]))
         
         fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+        
+        //assign WaveformView buffer to mTapBuffer from generator
+        let drawView:WaveformView = mDrawView as WaveformView
+        drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
     }
     
     

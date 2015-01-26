@@ -10,8 +10,7 @@ import Foundation
 import AVFoundation
 
 class WaveformGenerator
-{
-    
+{    
     //audio engine
     var mAudioEngine:AVAudioEngine?
     
@@ -26,6 +25,10 @@ class WaveformGenerator
     var mFourthHarmonicNode:AVAudioPlayerNode?
     var mFifthHarmonicNode:AVAudioPlayerNode?
     
+    //setup buffer
+    var mTapBuffer:AVAudioPCMBuffer?
+    
+    //setup harmonic node connections
     var mFirstHarmonicNodeConnected:Bool = false
     {
         didSet
@@ -196,6 +199,17 @@ class WaveformGenerator
         mAudioEngine?.attachNode(mFifthHarmonicNode)
         mAudioEngine?.connect(mFifthHarmonicNode, to: mMixerNode, format: nil)
         
+        //setup tap after mixer node and put values into array
+        
+        
+        mMixerNode?.installTapOnBus(0, bufferSize: 4096, format: mMixerNode?.outputFormatForBus(0),
+        {
+            (buffer: AVAudioPCMBuffer!, time:AVAudioTime!) -> Void in
+            //   NSLog("tapped that azz")
+                self.mTapBuffer = buffer
+        }
+        )
+        NSLog("Audio engine setup")
     }
     
     func startOscillation()
@@ -247,6 +261,7 @@ class WaveformGenerator
             mFifthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
             mFifthHarmonicNode?.play()
         }
+        
         
      }
     

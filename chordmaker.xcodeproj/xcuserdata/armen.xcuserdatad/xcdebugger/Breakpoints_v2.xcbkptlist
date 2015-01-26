@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chordmaker/WaveformGenerator.swift"
-            timestampString = "443599515.10706"
+            timestampString = "443942297.182095"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "fundamentalChanged(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,13 +90,73 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chordmaker/WaveformGenerator.swift"
-            timestampString = "443599515.10706"
+            timestampString = "443942297.182095"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "startOscillation()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "chordmaker/WaveformGenerator.swift"
+            timestampString = "443942297.182095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "init(_fundamental:_firstHarmonic:_secondHarmonic:_thirdHarmonic:_fourthHarmonic:_fifthHarmonic:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chordmaker.WaveformGenerator.init (chordmaker.WaveformGenerator.Type)(_fundamental : Swift.Float, _firstHarmonic : Swift.Float, _secondHarmonic : Swift.Float, _thirdHarmonic : Swift.Float, _fourthHarmonic : Swift.Float, _fifthHarmonic : Swift.Float) -&gt; chordmaker.WaveformGenerator"
+                  moduleName = "chordmaker"
+                  urlString = "file:///Users/armen/Documents/prog/xcode/chordmaker/chordmaker/WaveformGenerator.swift"
+                  timestampString = "443911276.097014"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "9556">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chordmaker.WaveformGenerator.(init (chordmaker.WaveformGenerator.Type) -&gt; (_fundamental : Swift.Float, _firstHarmonic : Swift.Float, _secondHarmonic : Swift.Float, _thirdHarmonic : Swift.Float, _fourthHarmonic : Swift.Float, _fifthHarmonic : Swift.Float) -&gt; chordmaker.WaveformGenerator).(closure #1)"
+                  moduleName = "chordmaker"
+                  urlString = "file:///Users/armen/Documents/prog/xcode/chordmaker/chordmaker/WaveformGenerator.swift"
+                  timestampString = "443911276.097863"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AVAudioPCMBuffer&gt;, @owned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AVAudioTime&gt;) -&gt; (@unowned ()) to @callee_unowned @objc_block (@unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AVAudioPCMBuffer&gt;, @unowned Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.AVAudioTime&gt;) -&gt; (@unowned ())"
+                  moduleName = "chordmaker"
+                  urlString = "file:///Users/armen/Documents/prog/xcode/chordmaker/chordmaker/WaveformGenerator.swift"
+                  timestampString = "443911276.098033"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

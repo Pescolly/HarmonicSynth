@@ -14,6 +14,9 @@ class WaveformGenerator
     //audio engine
     var mAudioEngine:AVAudioEngine?
     
+    //setup samplerate
+    let SAMPLE_RATE:Double = 48000
+    
     //setup interrupt constant
     let INTERRUPT_LOOP = AVAudioPlayerNodeBufferOptions.InterruptsAtLoop
     
@@ -172,6 +175,7 @@ class WaveformGenerator
         mAudioEngine = AVAudioEngine()
         mMixerNode = mAudioEngine?.mainMixerNode
         
+        
         //setup fundamental node and connect to main mixer for output
         mFundamentalNode = AVAudioPlayerNode()
         mFirstHarmonicNode = AVAudioPlayerNode()
@@ -205,7 +209,7 @@ class WaveformGenerator
         mMixerNode?.installTapOnBus(0, bufferSize: 4096, format: mMixerNode?.outputFormatForBus(0),
         {
             (buffer: AVAudioPCMBuffer!, time:AVAudioTime!) -> Void in
-            //   NSLog("tapped that azz")
+               NSLog("tapped that azz")
                 self.mTapBuffer = buffer
         }
         )

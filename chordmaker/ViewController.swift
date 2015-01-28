@@ -280,7 +280,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         //assign WaveformView buffer to mTapBuffer from generator
         let drawView:WaveformView = mDrawView as WaveformView
-        drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
+        if mWaveformGenerator?.mTapBuffer != nil
+        {
+            drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
+            NSLog("assigned waveform generator buffer to drawview buffer")
+        }
+        
     }
     
     

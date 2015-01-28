@@ -47,12 +47,28 @@ class WaveformView: UIView
         NSLog("draing new buffer")
         
         //create UInt16 array and store PCMBuffer values
-        var array:[Int16] = []
 
-        for var i = 0; i < Int(self.mBuffer.frameLength); i++
+        
+
+        let array = self.mBuffer?.floatChannelData
+        
+        if self.mBuffer == nil
         {
-            array.append(self.mBuffer.int16ChannelData.memory[i])
+            return
         }
+        
+        for var i = 0; i < Int(self.mBuffer!.frameLength); i++
+        {
+            if array?.memory[i] == nil
+            {
+                break
+            }
+            //          NSLog("Array value: \(array?.memory[i])")
+        }
+  
+        
+        
+        
     }
 
     

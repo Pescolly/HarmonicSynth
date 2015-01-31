@@ -40,6 +40,7 @@ func calculateFirstHarmonic(fundamental: Float, harmonicSelection: String) -> Fl
     {
         firstHarmonic = (fundamental * 2)
         firstHarmonic =  firstHarmonic! + (firstHarmonic! * 1.5)    //todo: FIX!
+        
     }
     else
     {
@@ -81,6 +82,8 @@ func calculateSecondHarmonic(fundamental: Float, harmonicSelection: String) -> F
     {
         secondHarmonic = 0
     }
+    NSLog("second harmonic calculated: \(secondHarmonic!)")
+
     return secondHarmonic!
 }
 
@@ -132,6 +135,8 @@ func calculateThirdHarmonic(fundamental: Float, harmonicSelection: String) -> Fl
     {
         thirdHarmonic = 0
     }
+    NSLog("third harmonic calculated: \(thirdHarmonic!)")
+
     return thirdHarmonic!
 }
 
@@ -147,7 +152,8 @@ func calculateFourthHarmonic(fundamental: Float, harmonicSelection: String) -> F
     {
         fourthHarmonic = 0
     }
-    
+    NSLog("Fourth harmonic calculated: \(fourthHarmonic!)")
+
     return fourthHarmonic!
 }
 
@@ -163,6 +169,7 @@ func calculateFifthHarmonic(fundamental: Float, harmonicSelection: String) -> Fl
     {
         fifthHarmonic = 0
     }
-    
+    NSLog("Fifth harmonic calculated: \(fifthHarmonic!)")
+
     return fifthHarmonic!
 }

@@ -232,6 +232,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             mFundamentalFrequency = newFundamentalFrequency
             mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
             fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+
+            mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,firstHarmonicPickerData[firstHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicTwoChanged(calculateSecondHarmonic(mFundamentalFrequency!, secondHarmonicPickerData[secondHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicThreeChanged(calculateThirdHarmonic(mFundamentalFrequency!, thirdHarmonicPickerData[thirdHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicFourChanged(calculateFourthHarmonic(mFundamentalFrequency!, fourthHarmonicPickerData[fourthHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicFiveChanged(calculateFifthHarmonic(mFundamentalFrequency!, fifthHarmonicPickerData[fifthHarmonicPicker.selectedRowInComponent(0)]))
+            fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+            
+            //assign WaveformView buffer to mTapBuffer from generator
+            let drawView:WaveformView = mDrawView as WaveformView
+            if mWaveformGenerator?.mTapBuffer != nil
+            {
+                drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
+                NSLog("assigned waveform generator buffer to drawview buffer")
+            }
+
         }
     }
     
@@ -242,7 +258,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         {
             mFundamentalFrequency = newFundamentalFrequency
             mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
+            
+            mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,firstHarmonicPickerData[firstHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicTwoChanged(calculateSecondHarmonic(mFundamentalFrequency!, secondHarmonicPickerData[secondHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicThreeChanged(calculateThirdHarmonic(mFundamentalFrequency!, thirdHarmonicPickerData[thirdHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicFourChanged(calculateFourthHarmonic(mFundamentalFrequency!, fourthHarmonicPickerData[fourthHarmonicPicker.selectedRowInComponent(0)]))
+            mWaveformGenerator?.harmonicFiveChanged(calculateFifthHarmonic(mFundamentalFrequency!, fifthHarmonicPickerData[fifthHarmonicPicker.selectedRowInComponent(0)]))
             fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
+            
+            //assign WaveformView buffer to mTapBuffer from generator
+            let drawView:WaveformView = mDrawView as WaveformView
+            if mWaveformGenerator?.mTapBuffer != nil
+            {
+                drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
+                NSLog("assigned waveform generator buffer to drawview buffer")
+            }
         }
     }
     
@@ -258,24 +288,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         NSLog("\(hundredHertzSliderValue) + \(tenHertzSliderValue)")
         
         mFundamentalFrequency = Float(hundredHertzSliderValue) +
-            Float(tenHertzSliderValue) +
-            Float(oneHertzSliderValue) +
-            oneTenthHertzSliderValue +
-            oneHundrethHertzSliderValue
+                                Float(tenHertzSliderValue) +
+                                Float(oneHertzSliderValue) +
+                                oneTenthHertzSliderValue +
+                                oneHundrethHertzSliderValue;
         
         mWaveformGenerator?.fundamentalChanged(mFundamentalFrequency!)
         
-        mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,
-            firstHarmonicPickerData[firstHarmonicPicker.selectedRowInComponent(0)]))
-        
+        mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,firstHarmonicPickerData[firstHarmonicPicker.selectedRowInComponent(0)]))
         mWaveformGenerator?.harmonicTwoChanged(calculateSecondHarmonic(mFundamentalFrequency!, secondHarmonicPickerData[secondHarmonicPicker.selectedRowInComponent(0)]))
-        
         mWaveformGenerator?.harmonicThreeChanged(calculateThirdHarmonic(mFundamentalFrequency!, thirdHarmonicPickerData[thirdHarmonicPicker.selectedRowInComponent(0)]))
-        
         mWaveformGenerator?.harmonicFourChanged(calculateFourthHarmonic(mFundamentalFrequency!, fourthHarmonicPickerData[fourthHarmonicPicker.selectedRowInComponent(0)]))
-        
         mWaveformGenerator?.harmonicFiveChanged(calculateFifthHarmonic(mFundamentalFrequency!, fifthHarmonicPickerData[fifthHarmonicPicker.selectedRowInComponent(0)]))
-        
         fundamentalFrequencyOutput.text = toString(mFundamentalFrequency!)
         
         //assign WaveformView buffer to mTapBuffer from generator
@@ -293,6 +317,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func startOscillation(sender: UIButton)
     {
         mWaveformGenerator?.startOscillation()
+        let drawView:WaveformView = mDrawView as WaveformView
+        if mWaveformGenerator?.mTapBuffer != nil
+        {
+            drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
+            NSLog("assigned waveform generator buffer to drawview buffer")
+        }
     }
     
     @IBAction func stopOscillator(sender: UIButton)

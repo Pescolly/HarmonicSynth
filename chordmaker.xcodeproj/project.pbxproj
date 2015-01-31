@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C0060BD21A757E15001E40F9 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0060BD11A757E15001E40F9 /* Line.swift */; };
 		C01E96041A6633C500EDB49D /* HarmonicCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01E96031A6633C500EDB49D /* HarmonicCalculator.swift */; };
 		C0CAAB5F1A6CAAA200449C9A /* WaveformGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CAAB5E1A6CAAA200449C9A /* WaveformGenerator.swift */; };
 		C0CAAB951A6DF1E000449C9A /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CAAB941A6DF1E000449C9A /* WaveformView.swift */; };
@@ -30,7 +29,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C0060BD11A757E15001E40F9 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		C01E96031A6633C500EDB49D /* HarmonicCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonicCalculator.swift; sourceTree = "<group>"; };
 		C0CAAB5E1A6CAAA200449C9A /* WaveformGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformGenerator.swift; sourceTree = "<group>"; };
 		C0CAAB941A6DF1E000449C9A /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			children = (
 				C0F0E9A71A594163009529FA /* AppDelegate.swift */,
 				C01E96031A6633C500EDB49D /* HarmonicCalculator.swift */,
-				C0060BD11A757E15001E40F9 /* Line.swift */,
 				C0F0E9A91A594163009529FA /* ViewController.swift */,
 				C0CAAB5E1A6CAAA200449C9A /* WaveformGenerator.swift */,
 				C0CAAB941A6DF1E000449C9A /* WaveformView.swift */,
@@ -227,7 +224,6 @@
 				C0CAAB5F1A6CAAA200449C9A /* WaveformGenerator.swift in Sources */,
 				C0F0E9AA1A594163009529FA /* ViewController.swift in Sources */,
 				C0CAAB951A6DF1E000449C9A /* WaveformView.swift in Sources */,
-				C0060BD21A757E15001E40F9 /* Line.swift in Sources */,
 				C01E96041A6633C500EDB49D /* HarmonicCalculator.swift in Sources */,
 				C0F0E9A81A594163009529FA /* AppDelegate.swift in Sources */,
 			);

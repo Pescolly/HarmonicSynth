@@ -209,7 +209,7 @@ class WaveformGenerator
         mMixerNode?.installTapOnBus(0, bufferSize: 4096, format: mMixerNode?.outputFormatForBus(0),
         {
             (buffer: AVAudioPCMBuffer!, time:AVAudioTime!) -> Void in
-               NSLog("tapped that azz")
+            // NSLog("tapped that azz")
                 self.mTapBuffer = buffer
         }
         )
@@ -231,10 +231,8 @@ class WaveformGenerator
         // check if nodes are connected, schedule buffers and play
         if mFirstHarmonicNodeConnected
         {
-            NSLog("First harmonic connected")
             let buffer = getBuffer(mFirstHarmonicFrequency!, _node: mFirstHarmonicNode!)
             mFirstHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
-            NSLog("Playing first harmonic")
             mFirstHarmonicNode?.play()
         }
         
@@ -303,6 +301,8 @@ class WaveformGenerator
         //assign new frequency to instance variable
         mFirstHarmonicFrequency = _frequency
         
+        NSLog("harmoinc one in waveform generator to: \(_frequency)")
+        
         //get new buffer and schedule
         var buffer = getBuffer(mFirstHarmonicFrequency!, _node: mFirstHarmonicNode!)
         mFirstHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
@@ -314,6 +314,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mSecondHarmonicFrequency = _frequency
+        NSLog("harmoinc two in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mSecondHarmonicFrequency!, _node: mSecondHarmonicNode!)
@@ -325,6 +326,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mThirdHarmonicFrequency = _frequency
+        NSLog("harmoinc three in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mThirdHarmonicFrequency!, _node: mThirdHarmonicNode!)
@@ -337,7 +339,8 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mFourthHarmonicFrequency = _frequency
-        
+        NSLog("harmoinc fourth in waveform generator to: \(_frequency)")
+
         //get new buffer and schedule
         var buffer = getBuffer(mFourthHarmonicFrequency!, _node: mFourthHarmonicNode!)
         mFourthHarmonicNode?.scheduleBuffer(buffer, atTime: nil, options: INTERRUPT_LOOP, completionHandler: nil)
@@ -349,6 +352,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mFifthHarmonicFrequency = _frequency
+        NSLog("harmoinc fifth in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mFifthHarmonicFrequency!, _node: mFifthHarmonicNode!)
@@ -371,6 +375,7 @@ class WaveformGenerator
         {
             var val = sinf(_frequency*Float(i)*2*Float(M_PI) / sampleRate)
             buffer.floatChannelData.memory[i] = val
+            // NSLog("Val: \(val)")
         }
         
         NSLog("returning buffer")

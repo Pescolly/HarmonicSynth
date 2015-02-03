@@ -16,7 +16,10 @@ class WaveformGenerator
     
     //setup samplerate
     let SAMPLE_RATE:Double = 48000
-    
+
+	// setup mono
+	let MONO = 1
+	
     //setup interrupt constant
     let INTERRUPT_LOOP = AVAudioPlayerNodeBufferOptions.InterruptsAtLoop
     
@@ -172,13 +175,16 @@ class WaveformGenerator
         mFifthHarmonicFrequency = _fifthHarmonic
         
         //init engine and main mixer
-        mAudioEngine = AVAudioEngine()
+		let channelcount = AVAudioChannelCount(1)
+		let audioformat = AVAudioFormat(commonFormat: AVAudioCommonFormat.PCMFormatInt16, sampleRate: SAMPLE_RATE, channels: channelcount, interleaved: false)
+
+		mAudioEngine = AVAudioEngine()
+		
         mMixerNode = mAudioEngine?.mainMixerNode
-        
-        
+		
         //setup fundamental node and connect to main mixer for output
         mFundamentalNode = AVAudioPlayerNode()
-        mFirstHarmonicNode = AVAudioPlayerNode()
+		mFirstHarmonicNode = AVAudioPlayerNode()
         mSecondHarmonicNode = AVAudioPlayerNode()
         mThirdHarmonicNode = AVAudioPlayerNode()
         mFourthHarmonicNode = AVAudioPlayerNode()
@@ -186,22 +192,22 @@ class WaveformGenerator
         
         //connect nodes to mixer
         mAudioEngine?.attachNode(mFundamentalNode)
-        mAudioEngine?.connect(mFundamentalNode, to: mMixerNode, format: nil)
+        mAudioEngine?.connect(mFundamentalNode, to: mMixerNode, format: audioformat)
         
         mAudioEngine?.attachNode(mFirstHarmonicNode)
-        mAudioEngine?.connect(mFirstHarmonicNode, to: mMixerNode, format: nil)
+        mAudioEngine?.connect(mFirstHarmonicNode, to: mMixerNode, format: audioformat)
         
         mAudioEngine?.attachNode(mSecondHarmonicNode)
-        mAudioEngine?.connect(mSecondHarmonicNode, to: mMixerNode, format: nil)
+        mAudioEngine?.connect(mSecondHarmonicNode, to: mMixerNode, format: audioformat)
         
         mAudioEngine?.attachNode(mThirdHarmonicNode)
-        mAudioEngine?.connect(mThirdHarmonicNode, to: mMixerNode, format: nil)
+        mAudioEngine?.connect(mThirdHarmonicNode, to: mMixerNode, format: audioformat)
         
         mAudioEngine?.attachNode(mFourthHarmonicNode)
-        mAudioEngine?.connect(mFourthHarmonicNode, to: mMixerNode, format: nil)
+        mAudioEngine?.connect(mFourthHarmonicNode, to: mMixerNode, format: audioformat)
         
         mAudioEngine?.attachNode(mFifthHarmonicNode)
-        mAudioEngine?.connect(mFifthHarmonicNode, to: mMixerNode, format: nil)
+        mAudioEngine?.connect(mFifthHarmonicNode, to: mMixerNode, format: audioformat)
         
         //setup tap after mixer node and put values into array
         
@@ -285,7 +291,7 @@ class WaveformGenerator
     
     func fundamentalChanged(_newFundamental:Float)
     {
-        NSLog("Fundamental changed in waveform generator to: \(_newFundamental)")
+		//        NSLog("Fundamental changed in waveform generator to: \(_newFundamental)")
         //calculate new waveforms and harmonics
         mFundamentalFrequency = _newFundamental
         var buffer = getBuffer(mFundamentalFrequency!, _node: mFundamentalNode!)
@@ -301,7 +307,7 @@ class WaveformGenerator
         //assign new frequency to instance variable
         mFirstHarmonicFrequency = _frequency
         
-        NSLog("harmoinc one in waveform generator to: \(_frequency)")
+		//        NSLog("harmoinc one in waveform generator to: \(_frequency)")
         
         //get new buffer and schedule
         var buffer = getBuffer(mFirstHarmonicFrequency!, _node: mFirstHarmonicNode!)
@@ -314,7 +320,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mSecondHarmonicFrequency = _frequency
-        NSLog("harmoinc two in waveform generator to: \(_frequency)")
+		//NSLog("harmoinc two in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mSecondHarmonicFrequency!, _node: mSecondHarmonicNode!)
@@ -326,7 +332,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mThirdHarmonicFrequency = _frequency
-        NSLog("harmoinc three in waveform generator to: \(_frequency)")
+		//NSLog("harmoinc three in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mThirdHarmonicFrequency!, _node: mThirdHarmonicNode!)
@@ -339,7 +345,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mFourthHarmonicFrequency = _frequency
-        NSLog("harmoinc fourth in waveform generator to: \(_frequency)")
+		//NSLog("harmoinc fourth in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mFourthHarmonicFrequency!, _node: mFourthHarmonicNode!)
@@ -352,7 +358,7 @@ class WaveformGenerator
     {
         //assign new frequency to instance variable
         mFifthHarmonicFrequency = _frequency
-        NSLog("harmoinc fifth in waveform generator to: \(_frequency)")
+		//        NSLog("harmoinc fifth in waveform generator to: \(_frequency)")
 
         //get new buffer and schedule
         var buffer = getBuffer(mFifthHarmonicFrequency!, _node: mFifthHarmonicNode!)
@@ -363,22 +369,24 @@ class WaveformGenerator
     
     func getBuffer(_frequency: Float, _node: AVAudioNode) -> AVAudioPCMBuffer
     {
-        NSLog("Getting buffer")
+		//        NSLog("Getting buffer")
         let audioFormat:AVAudioFormat = _node.outputFormatForBus(0)
-        let sampleRate:Float = Float(mMixerNode!.outputFormatForBus(0).sampleRate)
+		
+		let sampleRate:Float = Float(mMixerNode!.outputFormatForBus(0).sampleRate)
         let channelCount = mMixerNode?.outputFormatForBus(0).channelCount
-        let frameLength:UInt32 = 100
+        let frameLength:UInt32 = UInt32(1000)
         let buffer = AVAudioPCMBuffer(PCMFormat: audioFormat, frameCapacity: frameLength)
         buffer.frameLength = frameLength
-        
+		NSLog("mixer channel count: \(channelCount!)")
+			
         for var i = 0; i < Int(buffer.frameLength); i += Int(channelCount!)
         {
-            var val = sinf(_frequency*Float(i)*2*Float(M_PI) / sampleRate)
+            var val = sinf(_frequency * Float(i) * (2 * Float(M_PI)) / sampleRate)
             buffer.floatChannelData.memory[i] = val
             // NSLog("Val: \(val)")
         }
         
-        NSLog("returning buffer")
+		//        NSLog("returning buffer")
         return buffer
     }
 

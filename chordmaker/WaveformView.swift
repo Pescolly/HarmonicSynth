@@ -29,21 +29,9 @@ class WaveformView: UIView
         
     }
     
-    func calculateNewWaveform()
-    {
-        //add all 6 buffer arrays together
-        //let finalWaveform:[UInt16]
-        
-    }
-
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
-    {
-        mLastPoint = touches.anyObject()?.locationInView(self)
-    }
-    
     override func drawRect(rect: CGRect)
     {
-        NSLog("draing new buffer")
+		//    NSLog("draing new buffer")
         
         //create UInt16 array and store PCMBuffer value
 
@@ -54,19 +42,19 @@ class WaveformView: UIView
             return
         }
         
-        //initialize x and y values to 0
+ 	       //initialize x and y values to 0
         let context = UIGraphicsGetCurrentContext()
         let frameCenter = self.frame.height / 2
         let frameWidth:Int = Int(self.frame.width)
-        NSLog("Frame width: \(frameWidth)")
+  //      NSLog("Frame width: \(frameWidth)")
         
         var oldXValue:CGFloat = 0
         var oldYValue:CGFloat = self.frame.height / 2
         var xValue:CGFloat = 0
-        var yValue:CGFloat = self.frame.height / 2
+        var yValue:CGFloat = 0
         
         let bufferLength:Int = Int(self.mBuffer!.frameLength)
-        for var i = 0; i < frameWidth; i++
+		for var i = 0; i < frameWidth; i+=2			//increase by two because the second sample in the frame isn't being used.
         {
             
             if array?.memory[i] == nil
@@ -78,12 +66,12 @@ class WaveformView: UIView
             let sampleValue = array!.memory[i]
             //get new point from array
             xValue = CGFloat(i)  //CGFloat(frameWidth) * CGFloat(bufferLength)
-            yValue = CGFloat(sampleValue) * frameCenter + frameCenter
+            yValue = CGFloat(sampleValue) * (frameCenter - 20) + frameCenter
 
-            NSLog("\n")
-            NSLog("Sample: \(sampleValue)")
-            NSLog("xvalue: \(xValue), yvalue: \(yValue)\n")
-            
+//            NSLog("\n")
+//            NSLog("Sample: \(sampleValue)")
+//            NSLog("xvalue: \(xValue), yvalue: \(yValue)\n")
+//            
             //draw from last point to new point
             CGContextBeginPath(context)
             CGContextMoveToPoint(context, oldXValue, oldYValue)

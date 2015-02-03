@@ -138,14 +138,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         if pickerView == firstHarmonicPicker
         {
-            NSLog("first harmonic selected")
-            mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!,
-                firstHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
+            mWaveformGenerator?.harmonicOneChanged(calculateFirstHarmonic(mFundamentalFrequency!, firstHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
         }
 
         if pickerView == secondHarmonicPicker
         {
-            NSLog("second harmonic selected")
             mWaveformGenerator?.harmonicTwoChanged(calculateSecondHarmonic(mFundamentalFrequency!, secondHarmonicPickerData[pickerView.selectedRowInComponent(component)]))
         }
         
@@ -245,7 +242,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if mWaveformGenerator?.mTapBuffer != nil
             {
                 drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
-                NSLog("assigned waveform generator buffer to drawview buffer")
+    //            NSLog("assigned waveform generator buffer to drawview buffer")
             }
 
         }
@@ -271,7 +268,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if mWaveformGenerator?.mTapBuffer != nil
             {
                 drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
-                NSLog("assigned waveform generator buffer to drawview buffer")
+				//           NSLog("assigned waveform generator buffer to drawview buffer")
             }
         }
     }
@@ -285,7 +282,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let oneTenthHertzSliderValue:Float = Float(Int(oneTenthHertzSlider.value)) / 10
         let oneHundrethHertzSliderValue:Float = Float(Int(oneHundrethHertzSlider.value)) / 100
         
-        NSLog("\(hundredHertzSliderValue) + \(tenHertzSliderValue)")
+		//        NSLog("\(hundredHertzSliderValue) + \(tenHertzSliderValue)")
         
         mFundamentalFrequency = Float(hundredHertzSliderValue) +
                                 Float(tenHertzSliderValue) +
@@ -307,7 +304,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if mWaveformGenerator?.mTapBuffer != nil
         {
             drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
-            NSLog("assigned waveform generator buffer to drawview buffer")
+   //         NSLog("assigned waveform generator buffer to drawview buffer")
         }
         
     }
@@ -321,7 +318,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if mWaveformGenerator?.mTapBuffer != nil
         {
             drawView.mBuffer = mWaveformGenerator?.mTapBuffer!
-            NSLog("assigned waveform generator buffer to drawview buffer")
+			//    NSLog("assigned waveform generator buffer to drawview buffer")
         }
     }
     
